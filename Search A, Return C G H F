@@ -16,9 +16,10 @@ Sub SearchAndReturnMatches()
     ' Loop through Column B and check for matches
     For i = 1 To lastRow
         If InStr(1, ws.Cells(i, 2).Value, searchValue, vbTextCompare) > 0 Then
-            ' If a match is found, display or process values from Columns C, G, H, and F
+            ' If a match is found, display or process values from Columns C, E, G, H, and F
             MsgBox "Match found in Column B, Row " & i & ": " & ws.Cells(i, 2).Value & vbCrLf & _
                    "Value in Column C: " & ws.Cells(i, 3).Value & vbCrLf & _
+                   "Value in Column E: " & ws.Cells(i, 5).Value & vbCrLf & _
                    "Value in Column G: " & ws.Cells(i, 7).Value & vbCrLf & _
                    "Value in Column H: " & ws.Cells(i, 8).Value & vbCrLf & _
                    "Value in Column F: " & ws.Cells(i, 6).Value
