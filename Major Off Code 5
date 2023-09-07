@@ -1,0 +1,71 @@
+Sub SearchAndDisplayMatches()
+    Dim ws As Worksheet
+    Dim searchValue As String
+    Dim lastRow As Long
+    Dim i As Long
+    Dim foundMatches As Boolean
+    Dim resultWorksheet As Worksheet
+    Dim newRow As Long
+    
+    ' Set the worksheet where you want to perform the search
+    Set ws = ThisWorkbook.Worksheets("Sheet1") ' Replace "Sheet1" with your sheet name
+    
+    ' Prompt the user for the search value
+    searchValue = InputBox("Enter the keywords to search for:")
+    
+    ' Create a new worksheet to display the results
+    Set resultWorksheet = ThisWorkbook.Sheets.Add
+    resultWorksheet.Name = "SearchResults"
+    
+    ' Find the last row in Column B
+    lastRow = ws.Cells(ws.Rows.Count, "B").End(xlUp).Row
+    
+    ' Initialize the row count in the result worksheet
+    newRow = 1
+    
+    ' Loop through Column B and check for matches
+    For i = 1 To lastRow
+        If MatchKeywords(ws.Cells(i, 2).Value, searchValue) Then
+            ' If a match is found, add it to the result worksheet
+            If Not foundMatches Then
+                ' Add column headings to the result worksheet
+                ws.Range("A1:D1").Copy resultWorksheet.Cells(newRow, 1)
+                newRow = newRow + 1
+                foundMatches = True
+            End If
+            ' Copy the entire row to the result worksheet
+            ws.Range("A" & i & ":D" & i).Copy resultWorksheet.Cells(newRow, 1)
+            newRow = newRow + 1
+        End If
+    Next i
+    
+    ' Check if any matches were found
+    If Not foundMatches Then
+        MsgBox "No matches found."
+        Application.DisplayAlerts = False
+        resultWorksheet.Delete
+        Application.DisplayAlerts = True
+    End If
+End Sub
+
+Function MatchKeywords(cellValue As String, keywords As String) As Boolean
+    Dim keywordArray() As String
+    Dim keyword As String
+    Dim matched As Boolean
+    Dim i As Long
+    
+    ' Split the keywords into an array
+    keywordArray = Split(keywords, " ")
+    
+    ' Check if all keywords are found in the cell value (not case-sensitive)
+    matched = True
+    For i = LBound(keywordArray) To UBound(keywordArray)
+        keyword = keywordArray(i)
+        If InStr(1, LCase(cellValue), LCase(keyword), vbTextCompare) = 0 Then
+            matched = False
+            Exit For
+        End If
+    Next i
+    
+    MatchKeywords = matched
+End Function
