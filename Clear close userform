@@ -1,0 +1,22 @@
+Certainly! Here's the Visual Basic (VB) code for adding a Close button to the UserForm and a Clear button to clear the search box:
+
+1. In your UserForm, add a CommandButton named `CommandButton_Close` for the Close button and another CommandButton named `CommandButton_Clear` for clearing the search box.
+
+2. Double-click the `CommandButton_Close` button to open its code window and add the following code to close the UserForm:
+
+```vbnet
+Private Sub CommandButton_Close_Click()
+    Unload Me ' Close the UserForm
+End Sub
+```
+
+3. Double-click the `CommandButton_Clear` button to open its code window and add the following code to clear the search box:
+
+```vbnet
+Private Sub CommandButton_Clear_Click()
+    TextBox1.Value = "" ' Clear the TextBox (search box)
+    ListBox1.Clear ' Clear the ListBox (search results)
+End Sub
+```
+
+Now, when you click the Close button, the UserForm will be closed, and when you click the Clear button, it will clear the search box and the search results in the ListBox.
