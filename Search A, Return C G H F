@@ -1,0 +1,28 @@
+Sub SearchAndReturnMatches()
+    Dim ws As Worksheet
+    Dim searchValue As String
+    Dim lastRow As Long
+    Dim i As Long
+    
+    ' Set the worksheet where you want to perform the search
+    Set ws = ThisWorkbook.Worksheets("Sheet1") ' Replace "Sheet1" with your sheet name
+    
+    ' Prompt the user for the search value
+    searchValue = InputBox("Enter the value to search for:")
+    
+    ' Find the last row in Column B
+    lastRow = ws.Cells(ws.Rows.Count, "B").End(xlUp).Row
+    
+    ' Loop through Column B and check for matches
+    For i = 1 To lastRow
+        If InStr(1, ws.Cells(i, 2).Value, searchValue, vbTextCompare) > 0 Then
+            ' If a match is found, display or process values from Columns C, G, H, and F
+            MsgBox "Match found in Column B, Row " & i & ": " & ws.Cells(i, 2).Value & vbCrLf & _
+                   "Value in Column C: " & ws.Cells(i, 3).Value & vbCrLf & _
+                   "Value in Column G: " & ws.Cells(i, 7).Value & vbCrLf & _
+                   "Value in Column H: " & ws.Cells(i, 8).Value & vbCrLf & _
+                   "Value in Column F: " & ws.Cells(i, 6).Value
+            ' You can customize how you want to handle the matches
+        End If
+    Next i
+End Sub
