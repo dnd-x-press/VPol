@@ -13,9 +13,9 @@ Sub SearchAndDisplayMatches()
     ' Prompt the user for the search value
     searchValue = InputBox("Enter the keywords to search for:")
     
-    ' Create a new worksheet to display the results with a unique name
+    ' Create a new worksheet to display the results with a valid name
     Set resultWorksheet = ThisWorkbook.Sheets.Add
-    resultWorksheet.Name = "SearchResults_" & Format(Now, "yyyy-mm-dd_hh-mm-ss") & "_" & Replace(searchValue, " ", "_")
+    resultWorksheet.Name = CreateValidSheetName("SearchResults_" & Format(Now, "yyyy-mm-dd_hh-mm-ss") & "_" & searchValue)
     
     ' Find the last row in Column B
     lastRow = ws.Cells(ws.Rows.Count, "B").End(xlUp).Row
@@ -68,4 +68,19 @@ Function MatchKeywords(cellValue As String, keywords As String) As Boolean
     Next i
     
     MatchKeywords = matched
+End Function
+
+Function CreateValidSheetName(sheetName As String) As String
+    ' Replace invalid characters with underscores
+    Dim invalidChars As String
+    Dim i As Integer
+    invalidChars = "/\*?[]:"
+    For i = 1 To Len(invalidChars)
+        sheetName = Replace(sheetName, Mid(invalidChars, i, 1), "_")
+    Next i
+    ' Ensure the sheet name is not too long
+    If Len(sheetName) > 31 Then
+        sheetName = Left(sheetName, 31)
+    End If
+    CreateValidSheetName = sheetName
 End Function
