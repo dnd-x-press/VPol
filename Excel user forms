@@ -1,0 +1,22 @@
+Private Sub CommandButton1_Click()
+    Dim searchValue As String
+    Dim lastRow As Long
+    Dim i As Long
+    
+    ' Get the search value from the TextBox
+    searchValue = TextBox1.Text
+    
+    ' Clear the ListBox
+    ListBox1.Clear
+    
+    ' Find the last row in Column B
+    lastRow = Worksheets("Sheet1").Cells(Worksheets("Sheet1").Rows.Count, "B").End(xlUp).Row
+    
+    ' Loop through Column B and check for matches
+    For i = 1 To lastRow
+        If InStr(1, Worksheets("Sheet1").Cells(i, 2).Value, searchValue, vbTextCompare) > 0 Then
+            ' Add matching values to the ListBox
+            ListBox1.AddItem "Match found in Row " & i & ": " & Worksheets("Sheet1").Cells(i, 2).Value
+        End If
+    Next i
+End Sub
