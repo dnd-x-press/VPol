@@ -3,12 +3,16 @@ Sub SearchAndReturnMatches()
     Dim searchValue As String
     Dim lastRow As Long
     Dim i As Long
+    Dim cellValue As Variant
+    Dim resultText As String
+    Application.ScreenUpdating = False
+    Application.Calculation = xlCalculationManual
     
     ' Set the worksheet where you want to perform the search
     Set ws = ThisWorkbook.Worksheets("Sheet1") ' Replace "Sheet1" with your sheet name
     
     ' Prompt the user for the search value
-    searchValue = InputBox("Enter the value to search for:")
+    searchValue = InputBox("Enter the record description to search for:")
     
     ' Find the last row in Column B
     lastRow = ws.Cells(ws.Rows.Count, "B").End(xlUp).Row
@@ -16,25 +20,25 @@ Sub SearchAndReturnMatches()
     ' Loop through Column B and check for matches
     For i = 1 To lastRow
         If InStr(1, ws.Cells(i, 2).Value, searchValue, vbTextCompare) > 0 Then
-            ' If a match is found, display or process values from Columns C, E, G, H, and F
-            MsgBox "Match found in Column B, Row " & i & ": " & ws.Cells(i, 2).Value & vbCrLf & _
-                   "Value in Column C: " & ws.Cells(i, 3).Value & vbCrLf & _
-                  Dim cellValue As Variant
-Dim resultText As String
-
-' Get the value from Column E
-cellValue = ws.Cells(i, 5).Value
-
-' Check if the value is numeric
-If IsNumeric(cellValue) Then
-    resultText = "Value in Column E: " & cellValue & " Years" & vbCrLf
-Else
-    resultText = "Value in Column E: " & cellValue & vbCrLf
-End If
-                   "Value in Column G: " & ws.Cells(i, 7).Value & vbCrLf & _
-                   "Value in Column H: " & ws.Cells(i, 8).Value & vbCrLf & _
-                   "Value in Column F: " & ws.Cells(i, 6).Value
-            ' You can customize how you want to handle the matches
+            resultText = "Record Description: " & ws.Cells(i, 2).Value & vbCrLf & _
+                         "This record has a retention type of: " & ws.Cells(i, 3).Value & vbCrLf & _
+                         "This record is governed by RDA: " & ws.Cells(i, 7).Value & vbCrLf & _
+                         "The retention code for this record is: " & ws.Cells(i, 8).Value & vbCrLf & _
+                         "Can the record be transferred to VPASC: " & ws.Cells(i, 6).Value
+                         
+            cellValue = ws.Cells(i, 5).Value
+            If IsNumeric(cellValue) Then
+                resultText = resultText & vbCrLf & "This record has a minimum retention period of: " & cellValue & " Years"
+            Else
+                resultText = resultText & vbCrLf & "This record has a minimum retention period of: " & cellValue
+            End If
+            
+            ' Display the result
+            MsgBox resultText
         End If
     Next i
+    
+    ' Reset Excel settings
+    Application.ScreenUpdating = True
+    Application.Calculation = xlCalculationAutomatic
 End Sub
