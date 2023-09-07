@@ -29,7 +29,7 @@ Sub SearchAndDisplayMatches()
             ' If a match is found, add it to the result table
             If Not foundMatches Then
                 ' Create a new result table with headers in the new worksheet
-                Set resultTable = resultTable.ListObjectObject ' Copy the structure of the original table
+                Set resultTable = ws.ListObjects.Add(xlSrcRange, ws.Range("A1:D1").CurrentRegion, , xlYes)
                 resultTable.Name = "SearchResultsTable"
                 foundMatches = True
             End If
