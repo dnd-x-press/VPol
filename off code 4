@@ -28,11 +28,14 @@ Sub SearchAndDisplayMatches()
         If MatchKeywords(ws.Cells(i, 2).Value, searchValue) Then
             ' If a match is found, add it to the result table
             If Not foundMatches Then
+                ' Create a new result table with headers in the new worksheet
+                Set resultTable = resultTable.ListObjectObject ' Copy the structure of the original table
+                resultTable.Name = "SearchResultsTable"
                 foundMatches = True
             End If
             ' Copy the entire row to the result table
             Set resultRow = resultTable.ListRows.Add
-            ws.Rows(i).Copy resultRow.Range
+            ws.Range("A" & i & ":D" & i).Copy resultRow.Range
         End If
     Next i
     
@@ -48,7 +51,7 @@ Sub SearchAndDisplayMatches()
         Set resultWorksheet = ThisWorkbook.Sheets.Add
         resultWorksheet.Name = "SearchResults"
         
-        ' Copy the result table to the new worksheet
+        ' Copy the result table structure and data to the new worksheet
         resultTable.HeaderRowRange.Copy resultWorksheet.Cells(1, 1)
         resultTable.DataBodyRange.Copy resultWorksheet.Cells(2, 1)
     End If
