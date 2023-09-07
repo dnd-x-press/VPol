@@ -19,7 +19,18 @@ Sub SearchAndReturnMatches()
             ' If a match is found, display or process values from Columns C, E, G, H, and F
             MsgBox "Match found in Column B, Row " & i & ": " & ws.Cells(i, 2).Value & vbCrLf & _
                    "Value in Column C: " & ws.Cells(i, 3).Value & vbCrLf & _
-                   "Value in Column E: " & IIf(ws.Cells(i, 5).Value = "Permanent", "Blank", ws.Cells(i, 5).Value & " Years") & vbCrLf & _
+                  Dim cellValue As Variant
+Dim resultText As String
+
+' Get the value from Column E
+cellValue = ws.Cells(i, 5).Value
+
+' Check if the value is numeric
+If IsNumeric(cellValue) Then
+    resultText = "Value in Column E: " & cellValue & " Years" & vbCrLf
+Else
+    resultText = "Value in Column E: " & cellValue & vbCrLf
+End If
                    "Value in Column G: " & ws.Cells(i, 7).Value & vbCrLf & _
                    "Value in Column H: " & ws.Cells(i, 8).Value & vbCrLf & _
                    "Value in Column F: " & ws.Cells(i, 6).Value
