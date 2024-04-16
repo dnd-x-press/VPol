@@ -1,34 +1,25 @@
-steps
+Immediate/Short Term Actions:
 
-Step 1 - Filling Out the Form:
+Centralized Online Register: Implement a digital register of official diaries (potentially within existing applications like Station Books) for quick and cost-effective tracking.
 
-Initiate Request
-Submit Form
-Step 2 - Sending the Form:
+Member Training & Communication:
 
-Send to Destruction Manager
-Submit for Review
-Step 3 - Destruction Manager Review:
+Develop an e-learning module on diary maintenance and member obligations.
+Create a dedicated SharePoint page with information, FAQs, and VPASC retrieval links.
+Implement a bi-annual check-up system for Officers-in-Charge to encourage handing in inactive diaries for storage.
+Policy & Practice Reviews:
 
-Review Form & Contents
-Review Request
-Step 4 - Optional:  Additional Information Needed:
+Consider designating all notebooks as "accountable" to reduce reliance on expensive, bulky diaries.
+Formally review electronic diary usage (structure, saving practices, legal implications).
+Review current inactive/completed diary archiving timelines in Victoria Police Manuals.
+Long Term Recommendations:
 
-Request Additional Information
-Clarification Needed
-Step 5 - Destruction Manager Approval:
+Electronic Diaries:
 
-Approve Destruction
-Grant Approval
-Step 6 - Requester Destroys Documents:
+Ensure electronic diaries are "future-proof" for legal retrievals.
+Address challenges of electronic diary auditing, discoverability, and version control.
+Maintain a central electronic register to facilitate reporting and access for investigations and public inquiries.
+Explore registering electronic diaries in Station Books with file details.
+VPASC Funding & Resources:
 
-Complete Destruction
-Execute Destruction
-Step 7 - Completing the Request:
-
-Submit Destruction Certificate
-Finalize Request
-Additional Options:
-
-Cancel Request (if needed)
-View Request Status (if applicable)
+Dedicate a separate team for existing diary amnesty drives to reduce burden on VPASC staff and increase collection frequency.
