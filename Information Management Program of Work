@@ -1,0 +1,31 @@
+Information Management Program of Work
+
+ This SharePoint page provides an overview of the Information Management (IM) program's current work and progress.
+
+ Overall Program Progress:
+
+[Progress Bar]: Visually represents the overall completion percentage of the IM program initiatives.
+ Status of Activities:
+
+[Pie Chart]: This central element shows the breakdown of program activities, categorized by:
+Completed: Percentage representing activities successfully finished.
+In Progress: Percentage representing activities currently underway.
+Not Started: Percentage representing activities yet to be initiated.
+ Detailed Activity Breakdown:
+
+Completed Activities:
+A bulleted list with brief descriptions and completion dates for finished activities.
+In Progress Activities:
+Another bulleted list with descriptions, estimated completion dates, and current progress details (e.g., % complete) for ongoing activities.
+ Additional Information:
+
+Consider adding a section for "Upcoming Activities," which can briefly outline planned initiatives and estimated start dates.
+Include a "Resources" section with links to relevant documents, templates, or training materials related to the IM program.
+If applicable, add a "Contact" section with names and contact information for program leads or key personnel.
+ Design Tips:
+
+Use a clean and professional layout with clear headings and easy-to-read fonts.
+Leverage SharePoint's built-in web parts for progress bars and pie charts.
+Utilize color-coding to differentiate between completed, in progress, and not started activities.
+Consider incorporating icons or visuals to enhance the user experience.
+Ensure the page is mobile-friendly for easy access on any device.
